@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flutter: Run App (Debug)",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "flutterMode": "debug",
+            "deviceId": "linux"
+        },
+        {
+            "name": "Flutter: Run Tests",
+            "type": "dart", 
+            "request": "launch",
+            "program": "test/widget_test.dart",
+            "args": ["--reporter", "json"],
+            "deviceId": "linux"
+        },
+        {
+            "name": "Flutter: Run App (Release)",
+            "type": "dart",
+            "request": "launch", 
+            "program": "lib/main.dart",
+            "flutterMode": "release",
+            "deviceId": "linux"
+        },
+        {
+            "name": "Flutter: Run Specific Test",
+            "type": "dart",
+            "request": "launch",
+            "program": "test/widget_test.dart",
+            "args": ["--plain-name", "Basic navigation test"],
+            "deviceId": "linux"
+        }
+    ]
+}
