@@ -28,7 +28,11 @@ void main() {
       
       // Navigate to Page 2 (CounterModel approach)
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle(); 
+      
+      // Wait for animation to complete with multiple pumps
+      for (int i = 0; i < 10; i++) {
+        await tester.pump(const Duration(milliseconds: 50));
+      }
       
       // Verify we're on Page 2
       expect(find.text('Page 2: CounterModel'), findsOneWidget);
@@ -36,7 +40,9 @@ void main() {
       
       // Navigate to Page 3 (CounterNotifier approach)
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle();
+      for (int i = 0; i < 10; i++) {
+        await tester.pump(const Duration(milliseconds: 50));
+      }
       
       // Verify we're on Page 3
       expect(find.text('Page 3: CounterNotifier'), findsOneWidget);
@@ -44,7 +50,9 @@ void main() {
       
       // Navigate to Page 4 (Provider approach)
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle();
+      for (int i = 0; i < 10; i++) {
+        await tester.pump(const Duration(milliseconds: 50));
+      }
       
       // Verify we're on Page 4
       expect(find.text('Page 4: Provider Pattern'), findsOneWidget);
@@ -52,7 +60,9 @@ void main() {
       
       // Test backward navigation: go back to Page 3
       await tester.tap(find.text('<< Previous'));
-      await tester.pumpAndSettle();
+      for (int i = 0; i < 10; i++) {
+        await tester.pump(const Duration(milliseconds: 50));
+      }
       
       // Verify we're back on Page 3
       expect(find.text('Page 3: CounterNotifier'), findsOneWidget);
@@ -60,7 +70,9 @@ void main() {
       
       // Go back to Page 2
       await tester.tap(find.text('<< Previous'));
-      await tester.pumpAndSettle();
+      for (int i = 0; i < 10; i++) {
+        await tester.pump(const Duration(milliseconds: 50));
+      }
       
       // Verify we're on Page 2
       expect(find.text('Page 2: CounterModel'), findsOneWidget);
@@ -68,7 +80,9 @@ void main() {
       
       // Go back to Page 1
       await tester.tap(find.text('<< Previous'));
-      await tester.pumpAndSettle();
+      for (int i = 0; i < 10; i++) {
+        await tester.pump(const Duration(milliseconds: 50));
+      }
       
       // Verify we're back on Page 1
       expect(find.text('Page 1: StatefulWidget'), findsOneWidget);
@@ -86,11 +100,11 @@ void main() {
       
       // Navigate to last page to test Next button disabled state
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle();
+      await tester.pump(const Duration(milliseconds: 500));
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle();
+      await tester.pump(const Duration(milliseconds: 500));
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle();
+      await tester.pump(const Duration(milliseconds: 500));
       
       // Verify we're on the last page
       expect(find.text('Page 4: Provider Pattern'), findsOneWidget);
@@ -110,17 +124,17 @@ void main() {
       
       // Navigate and check Page 2 description
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle();
+      await tester.pump(const Duration(milliseconds: 500));
       expect(find.text('Using immutable CounterModel class for state management'), findsOneWidget);
       
       // Navigate and check Page 3 description
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle();
+      await tester.pump(const Duration(milliseconds: 500));
       expect(find.text('CounterNotifier with ValueListenableBuilder for reactive updates'), findsOneWidget);
       
       // Navigate and check Page 4 description
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle();
+      await tester.pump(const Duration(milliseconds: 500));
       expect(find.text('Provider pattern with InheritedWidget for state sharing'), findsOneWidget);
     });
 
@@ -134,23 +148,21 @@ void main() {
       
       // Navigate to Page 2 and test counter
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle();
-      await tester.pump(const Duration(milliseconds: 100)); // Wait for init
+      await tester.pump(const Duration(milliseconds: 500));
       await tester.tap(find.byIcon(Icons.add));
       await tester.pump();
       expect(find.text('1'), findsOneWidget); // Local counter starts from 0
       
       // Navigate to Page 3 and test counter
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle();
-      await tester.pump(const Duration(milliseconds: 100)); // Wait for init
+      await tester.pump(const Duration(milliseconds: 500));
       await tester.tap(find.byIcon(Icons.add));
       await tester.pump();
       expect(find.text('1'), findsOneWidget); // Local counter starts from 0
       
       // Navigate to Page 4 and test counter
       await tester.tap(find.text('Next >>'));
-      await tester.pumpAndSettle();
+      await tester.pump(const Duration(milliseconds: 500));
       await tester.tap(find.byIcon(Icons.add));
       await tester.pump();
       // Page 4 uses shared state directly, so it should work as expected

@@ -76,18 +76,18 @@ class _MyHomePageState extends State<MyHomePage> {
     "Provider pattern with InheritedWidget for state sharing",
   ];
 
-  void _nextPage() {
+  Future<void> _nextPage() async {
     if (_currentPage < 3) {
-      _pageController.nextPage(
+      await _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
   }
 
-  void _previousPage() {
+  Future<void> _previousPage() async {
     if (_currentPage > 0) {
-      _pageController.previousPage(
+      await _pageController.previousPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
