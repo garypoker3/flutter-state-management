@@ -241,11 +241,3 @@ All pages include try-catch blocks to handle cases where the Provider context mi
 
 ---
 
-## 📝 Prompts History
-
-i've been learning about state management and following https://www.hungrimind.com/articles/flutter-state-management. I started from initial flutter counter app, and then moving further extending it to use CounterModel then CounterNotifier (see models/counter_model.dart) and finaly Provider.dart. You can see i was commenting out the code switching into new approaches and finaly switching  HomePage from StateFullWidget to StateLessWidget. Based on this i want you to generate the demo app with 4 separate pages presented aka wizard style with  Next>> and << Previous buttons, so every page will be presenting stages of my learning aproach starting from standard flutter init StateFullWidget homepage, the second page will be using CounterModel the next one with CounterNotifier and ValueListenableBuilder and forth page using the Provider class. All pages will be listening to the same counter so i can see same value through the pages. Make comments in the code. 
-
-can you explain why Page3NotifierCounter is still a StatefulWidget, isn't using ValueListenableBuilder should address notifying about counter change?
-
-Update README.md file describing the project and the approach used for every page following by simple mermaid diagram explaining state behaviours. 
-The  README.md file contains current and previous prompts. Make any changes to the file but do not change the prompts, simply  put them at the end under prompts history section. create launch-debug test section so i can run it from VS 'Test and Debug' toolbar with explanation, plus terminal command to run test from terminal.
